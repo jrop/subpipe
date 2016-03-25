@@ -1,14 +1,14 @@
 'use strict'
 
-module.exports = function subpipe(head) {
-	var tail = head
-	var _pipeNext = head.pipe.bind(head)
+const through2 = require('through2')
+const PassThrough = require('stream').PassThrough
 
-	head.pipe = function (dest) {
-		tail = _pipeNext(dest)
-		_pipeNext = tail.pipe.bind(tail)
-		return head
-	}
+module.exports = function subpipe(callback) {
+	var head = new PassThrough({ objectMode: true })
+	var tail = callback.call(head, head)
 
-	return head
+	return through2.obj(function (obj, enc, done) {
+		tail.on('data', data => done(null, data))
+		head.write(obj)
+	})
 }
