@@ -17,7 +17,7 @@ gulp.task('test:babel', function () {
 
 gulp.task('test:webpack', function () {
 	const subpipe = require('./index')
-	return gulp.src('test-src/wp.js')
+	return gulp.src('test-src/wp*.js')
 		// .pipe(webpack())
 		.pipe(subpipe(_ => _
 			.pipe(named())

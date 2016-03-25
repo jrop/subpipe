@@ -1,3 +1,4 @@
+test-build/
 test-src/
 .babelrc
 gulpfile.js
