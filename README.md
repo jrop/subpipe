@@ -1,5 +1,5 @@
 subpipe
-===
+=======
 
 A utility for creating reusable sub-pipes, designed especially for use with Gulp.
 
@@ -15,18 +15,18 @@ npm install --save-dev subpipe
 var subpipe = require('subpipe')
 function processJavascript() {
 	return subpipe(function pipeCreator() {
-    	//
-        // Create the pipeline: note that the following
-        // `return` is absolutely necessary:
-        //
-    	return this.pipe(babel())
-        	.pipe(uglify())
-    })
+		//
+		// Create the pipeline: note that the following
+		// `return` is absolutely necessary:
+		//
+		return this.pipe(babel())
+			.pipe(uglify())
+	})
 }
 
 gulp.task('js', function () {
 	return gulp.src('**/*.js')
-    	.pipe(processJavascript())
+		.pipe(processJavascript())
 })
 ```
 
@@ -35,7 +35,7 @@ Or if you are using a lambda:
 ```js
 subpipe(_ => _
 	.pipe(babel())
-    .pipe(uglify()))
+	.pipe(uglify()))
 // => creates a new stream you can pipe to
 ```
 

@@ -21,11 +21,14 @@ module.exports = function subpipe(streamCreator) {
 		callback() // discard
 	}, function flush (callback) {
 		var self = this
-		
-		if (!tailEnded)
+
+		if (!tailEnded) {
+			// need to wait for tail to end:
 			tail.on('end', function () { callback() })
-		else
+		} else {
+			// tail is already ended, so are we:
 			callback()
+		}
 
 		// kick-off flush:
 		head.end()
