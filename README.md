@@ -1,6 +1,8 @@
 subpipe
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jrop/subpipe.svg)](https://greenkeeper.io/)
+
 A utility for creating reusable sub-pipes, designed especially for use with Gulp.
 
 ## Installation
